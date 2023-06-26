@@ -1,6 +1,9 @@
-require('dotenv').config();
+const dotenv = require('dotenv');
+const path = require('path');
 const Discord = require('discord.js');
 const { Client, GatewayIntentBits } = Discord;
+
+dotenv.config({ path: path.join(__dirname, '../.env') });
 
 const client = new Client({
   intents: [
@@ -19,6 +22,10 @@ client.on('messageCreate', (message) => {
 
   if (command.includes('twitter.com')) {
     editedUrl = command.replace('twitter.com', 'vxtwitter.com');
+  } else if(command.includes('instagram.com')) {
+    editedUrl = command.replace('instagram.com', 'ddinstagram.com');
+  } else if (command.includes('tiktok.com')) {
+    editedUrl = command.replace('tiktok.com', 'tiktxk.com');
   }
 
   if (editedUrl !== "") {
@@ -29,7 +36,6 @@ client.on('messageCreate', (message) => {
 
     return message.reply(editedUrl);
   }
-  // }
 });
 
 
