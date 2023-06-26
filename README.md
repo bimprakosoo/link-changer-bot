@@ -32,7 +32,7 @@
 <pre><code>node main.js</code></pre>
 <p>After running the bot, to try it just copy the url from twitter, instagram, or tiktok. The bot will automatically reply with modified url.</p>
 
-![img.png](img.png)
+![img_1.png](img_1.png)
 
 <h2>Contributing</h2>
 
