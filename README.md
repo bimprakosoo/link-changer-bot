@@ -30,9 +30,10 @@
 <p>To start the bot, run the following command (make sure you're inside src folder):</p>
 
 <pre><code>node main.js</code></pre>
-<p>After running the bot, to try it just copy the url from twitter, instagram, or tiktok. The bot will automatically reply with modified url.</p>
+<p>After running the bot, to try it just copy the url from twitter, instagram, or tiktok. The bot will automatically reply with modified url. The source
+message will be deleted after that, so it won't make double messages. But don't worry, the bot will still contain the original message beside the link.</p>
 
-![img_1.png](img_1.png)
+![img.png](img.png)
 
 <h2>Contributing</h2>
 

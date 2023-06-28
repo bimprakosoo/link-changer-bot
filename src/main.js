@@ -1,6 +1,7 @@
 const dotenv = require('dotenv');
 const path = require('path');
 const Discord = require('discord.js');
+const repl = require("repl");
 const { Client, GatewayIntentBits } = Discord;
 
 dotenv.config({ path: path.join(__dirname, '../.env') });
@@ -15,7 +16,7 @@ const client = new Client({
 });
 
 const repliedUrls = new Map();
-client.on('messageCreate', (message) => {
+client.on('messageCreate', async (message) => {
   if (message.author.bot) return;
   const command = message.content;
   let editedUrl = "";
@@ -28,14 +29,21 @@ client.on('messageCreate', (message) => {
     editedUrl = command.replace('tiktok.com', 'tiktxk.com');
   }
 
-  message.delete(1000);
   if (editedUrl !== "") {
     const channelId = message.channel.id;
     if (repliedUrls.has(channelId) && repliedUrls.get(channelId).includes(editedUrl)) {
       return;
     }
 
-    return message.reply(editedUrl);
+    const userMention = `<@${message.author.id}>`;
+    const replyMessage = await message.reply(`From ${userMention}: ${editedUrl}`);
+    await message.delete();
+
+    if(repliedUrls.has(channelId)) {
+      repliedUrls.get(channelId).push(editedUrl);
+    } else {
+      repliedUrls.set(channelId, [editedUrl]);
+    }
   }
 });
 
