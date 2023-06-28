@@ -19,6 +19,7 @@ client.on('messageCreate', (message) => {
   if (message.author.bot) return;
   const command = message.content;
   let editedUrl = "";
+  message.delete(1000);
 
   if (command.includes('twitter.com')) {
     editedUrl = command.replace('twitter.com', 'vxtwitter.com');
