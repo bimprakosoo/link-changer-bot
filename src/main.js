@@ -27,6 +27,8 @@ client.on('messageCreate', async (message) => {
     editedUrl = command.replace('instagram.com', 'ddinstagram.com');
   } else if (command.includes('tiktok.com')) {
     editedUrl = command.replace('tiktok.com', 'tiktxk.com');
+  } else if (command.includes('9gag') && command.endsWith('av1.mp4')) {
+    editedUrl = command.replace(/av1\.mp4$/, '.mp4');
   }
 
   if (editedUrl !== "") {
