@@ -39,7 +39,7 @@ client.on('messageCreate', async (message) => {
 
     const userMention = `<@${message.author.id}>`;
     const replyMessage = await message.reply(`From ${userMention}: ${editedUrl}`);
-    await message.delete();
+    await message.suppressEmbeds(true);
 
     if(repliedUrls.has(channelId)) {
       repliedUrls.get(channelId).push(editedUrl);
