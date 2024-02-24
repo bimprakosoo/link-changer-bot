@@ -19,6 +19,11 @@ const repliedUrls = new Map();
 client.on('messageCreate', async (message) => {
   if (message.author.bot) return;
   const command = message.content;
+
+  if (command.includes('twitter.com') && command.includes('.mp4')) {
+    return;
+  }
+
   let editedUrl = "";
 
   if (command.includes('twitter.com')) {
@@ -38,7 +43,7 @@ client.on('messageCreate', async (message) => {
     }
 
     const userMention = `<@${message.author.id}>`;
-    const replyMessage = await message.reply(`From ${userMention}: ${editedUrl}`);
+    const replyMessage = await message.reply({ content: `${editedUrl}`, allowedMentions: { repliedUser: false } });
     await message.suppressEmbeds(true);
 
     if(repliedUrls.has(channelId)) {
