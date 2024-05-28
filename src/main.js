@@ -26,13 +26,15 @@ client.on('messageCreate', async (message) => {
 
   let editedUrl = "";
 
-  if (command.includes('twitter.com')) {
-    editedUrl = command.replace('twitter.com', 'vxtwitter.com');
+  if (command.includes('twitter.com') || command.includes('x.com')) {
+    editedUrl = command.replace(/twitter\.com|x\.com/, 'vxtwitter.com');  
   } else if(command.includes('instagram.com')) {
     editedUrl = command.replace('instagram.com', 'ddinstagram.com');
-  } else if (command.includes('tiktok.com')) {
-    editedUrl = command.replace('tiktok.com', 'tiktxk.com');
-  } else if (command.includes('9gag') && command.endsWith('av1.mp4')) {
+  } 
+  // else if (command.includes('tiktok.com')) {
+  //   editedUrl = command.replace('tiktok.com', 'tiktxk.com');
+  // } 
+  else if (command.includes('9gag') && command.endsWith('av1.mp4')) {
     editedUrl = command.replace(/av1\.mp4$/, '.mp4');
   }
 
