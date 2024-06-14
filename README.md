@@ -32,6 +32,7 @@
 <pre><code>node main.js</code></pre>
 <p>After running the bot, to try it just copy the url from twitter, instagram, or tiktok. The bot will automatically reply with modified url. The source
 message will be deleted after that, so it won't make double messages. But don't worry, the bot will still contain the original message beside the link.</p>
+<p>If you want to ignore the url, just add !ignore <url></p>
 
 ![img.png](img.png)
 
