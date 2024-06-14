@@ -22,6 +22,8 @@ client.on('messageCreate', async (message) => {
 
   if (command.includes('twitter.com') && command.includes('.mp4')) {
     return;
+  } else if (command.startsWith('!ignoreurl')) {
+    return;
   }
 
   let editedUrl = "";
