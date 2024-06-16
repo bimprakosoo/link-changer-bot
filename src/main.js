@@ -16,19 +16,22 @@ const client = new Client({
 });
 
 const repliedUrls = new Map();
+let editedUrl = "";
+let ddDisabled = true;
+
 client.on('messageCreate', async (message) => {
   if (message.author.bot) return;
   const command = message.content;
 
-  if (command === '!disable dd') {
-    ddEnabled = false;
-    await message.reply('ddinstagram has been disabled.');
-    return;
-  }
-
   if (command === '!enable dd') {
     ddEnabled = true;
     await message.reply('ddinstagram has been enabled.');
+    return;
+  }
+
+  if (command === '!disable dd') {
+    ddEnabled = false;
+    await message.reply('ddinstagram has been disabled.');
     return;
   }
 
@@ -38,18 +41,11 @@ client.on('messageCreate', async (message) => {
     return;
   }
 
-  let editedUrl = "";
-  let ddEnabled = true;
-
   if (command.includes('twitter.com') || command.includes('x.com')) {
     editedUrl = command.replace(/twitter\.com|x\.com/, 'vxtwitter.com');  
-  } else if(command.includes('instagram.com')) {
+  } else if(command.includes('instagram.com') && ddDisabled) {
     editedUrl = command.replace('instagram.com', 'ddinstagram.com');
-  } 
-  // else if (command.includes('tiktok.com')) {
-  //   editedUrl = command.replace('tiktok.com', 'tiktxk.com');
-  // } 
-  else if (command.includes('9gag') && command.includes('av1.mp4')) {
+  } else if (command.includes('9gag') && command.includes('av1.mp4')) {
     editedUrl = command.replace(/av1\.mp4$/, '.mp4');
   }
 
